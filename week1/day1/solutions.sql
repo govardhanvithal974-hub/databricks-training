@@ -46,3 +46,17 @@ FROM employee;
 SELECT department_id, COUNT(*) AS employee_count
 FROM employee
 GROUP BY department_id;
+
+--Date queries
+select name from Employee where Extract(YEAR from hire_date)=2020;
+select name from Employee where Extract(MONTH from hire_date)=1;
+select name from Employee where Extract(YEAR from hire_date)<2019;
+select name from Employee where hire_date>='2021-03-01';
+select name from Employee where hire_date>=CURDATE()-INTERVAL 2 year;
+
+--Aggregate queries
+select sum(salary) as total_salary from Employee;
+select avg(salary) as average_salary from Employee;
+select min(salary) as minimum_salary from Employee;
+select department_id,count(*) as NUMBEROFEMPLOYEES from Employee group by department_id;
+select department_id,avg(salary) as avg_salary from Employee group by department_id;
